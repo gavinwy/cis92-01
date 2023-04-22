@@ -1,1 +1,4 @@
 mysite/mysite/__pycache__
+db.sqlite3
+mysite/mysite/__pycache__/settings.cpython-310.pyc
+mysite/db.sqlite3
