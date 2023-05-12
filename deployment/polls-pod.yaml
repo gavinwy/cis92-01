@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: polls
+  labels:
+    function: webserver
+spec:
+  containers:
+  - name: polls
+    image: ghcr.io/gavinwy/cis92-01:milestone-4.0
+    ports:
+    - containerPort: 80
+    env:
+    - name: SECRET_KEY
+      value: "SETEC ASTRONOMY"
+    - name: PORT
+      value: "80"
