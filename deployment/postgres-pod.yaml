@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+  volumes:
+  - name: db
+    persistentVolumeClaim:
+      claimName: db
+  containers:
+  - name: postgres
+    image: docker.io/postgres:14.1
+    resources:
+      limits:
+        cpu: 250m 
+        memory: 512Mi
+    livenessProbe:
+      exec:
+        command:
+        - pg_isready
+    volumeMounts:
+    - name: db
+      mountPath: /var/lib/postgresql
+    ports:
+    - containerPort: 5432
+    env:
+    - name: POSTGRES_PASSWORD
+      value: "django"
+    - name: POSTGRES_DB
+      value: "mysite"
